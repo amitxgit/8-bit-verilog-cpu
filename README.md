@@ -11,7 +11,7 @@
 | `alu.v`            | 8-bit ALU (ADD, SUB, AND, OR, XOR, NOT, SHL, SHR, INC, DEC, CMP) |
 | `register_file.v`  | 8 × 8-bit register file (2 read ports, 1 write port) |
 | `memory.v`         | 256×8 instruction ROM + 256×8 data RAM |
-| `cpu8.v`           | Top-level CPU with 5-stage FSM control unit |
+| `cpu8.v`           | CPU with 5-stage FSM control unit |
 | `cpu8_tb.v`        | Simulation testbench |
 | `cpu8.xdc`         | Pin constraints for Basys3 board |
 | `create_project.tcl` | Vivado Tcl script to auto-build the project |
@@ -168,13 +168,3 @@ So rs1=R0(000), rs2=R1(001) → byte1 = `000_001_00` = `0x04`
 
 ---
 
-## Extending the CPU
-
-Some ideas to build on this foundation:
-
-- Add a **stack pointer** (R7 as SP) and `PUSH`/`POP` instructions
-- Add **shift-by-register** (`SHL Rd, Rs1, Rs2`)
-- Add a **multiply instruction** (8×8 → 16-bit result in two registers)
-- Implement a proper **pipeline** (IF/ID/EX/MEM/WB with hazard detection)
-- Add **interrupt handling** with a saved PC register
-- Connect to **7-segment display** via an output port register
